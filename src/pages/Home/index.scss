@@ -1,0 +1,133 @@
+/* Body
+-------------------------------------------------- */
+.row {
+  margin: 0 !important;
+}
+
+.container {
+  max-width: 1450px !important;
+  margin: 30px 0;
+
+  .container-left {
+    padding: 0 1rem;
+
+    .container-left-buttons {
+      display: flex;
+      align-items: center !important;
+      margin: 20px 0 50px 0;
+    }
+  }
+
+  .container-token-staking {
+    border: solid 1px rgba(255, 255, 255, 0.4);
+    max-width: 620px;
+    padding: 0.75rem;
+    margin: auto;
+    background-color: rgba(0, 0, 255, 0.05);
+    overflow: hidden;
+
+    .row-title {
+      font-family: Aldrich, sans-serif !important;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-top: 0.75rem;
+    }
+
+    .static {
+      font-size: 1.5rem !important;
+    }
+
+    .row-body {
+      font-family: 'Rajdhani', sans-serif;
+      font-style: normal;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .days-left {
+      font-family: 'Rajdhani', sans-serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .row-button {
+      width: 100%;
+      text-decoration: none !important;
+      border-width: 1px;
+      border-radius: 4px;
+      color: #72a230;
+      background-color: #fff;
+      border-color: #72a230;
+
+      &:hover {
+        background-color: #72a230;
+        border-color: #72a230;
+        color: #fff;
+      }
+
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.modal-content {
+  background-color: black !important;
+  border: solid 1px rgba(255, 255, 255, 0.75) !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px rgba(255, 255, 255, 0.75);
+
+  .modal-body {
+    margin: 1rem auto;
+    align-items: center;
+
+    .title {
+      font-family: Aldrich, sans-serif !important;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .stake {
+      float: right;
+    }
+
+    .unstake {
+      float: right;
+    }
+
+    .modal-action {
+      text-align: center;
+
+      .staking-amount-input {
+        color: white;
+        padding: 1rem 0;
+        overflow: hidden;
+
+        input {
+          font-family: Aldrich, sans-serif !important;
+          font-weight: 400;
+          font-size: 1rem;
+          max-width: auto;
+          text-align: center;
+        }
+
+        .staking-amount-input-text-max {
+          padding: 0 0.5rem;
+          cursor: pointer;
+        }
+      }
+      .error-message {
+        color: red;
+      }
+    }
+  }
+}

@@ -1,0 +1,314 @@
+/* Bootstrap overrides
+-------------------------------------------------- */
+
+$light: rgba(0, 0, 0, 0.7);
+
+/* Do not move the imports from here.
+Override Bootstrap variables only above.
+-------------------------------------------------- */
+
+// Bootstrap
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+/* Base
+-------------------------------------------------- */
+html {
+  min-height: 100%;
+}
+
+.wrapper {
+  min-height: 100vh;
+}
+
+.dapp-icon {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: $light;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  &.icon-medium {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Fonts
+-------------------------------------------------- */
+h1 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 3rem;
+  color: #fafafa;
+}
+
+h1.cpc-styled {
+  position: relative;
+}
+
+h1.cpc-styled::before {
+  content: '';
+  display: block;
+  width: 100px;
+  margin-bottom: 13px;
+  -webkit-clip-path: polygon(
+    0 calc(100% - 1px),
+    2px 0,
+    40px 0,
+    42px calc(100% - 1px),
+    100% calc(100% - 1px),
+    100% 100%,
+    0 100%
+  );
+  clip-path: polygon(
+    0 calc(100% - 1px),
+    2px 0,
+    40px 0,
+    42px calc(100% - 1px),
+    100% calc(100% - 1px),
+    100% 100%,
+    0 100%
+  );
+  border-top: 3px solid currentColor;
+}
+
+h2 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 2rem;
+  color: #fafafa;
+}
+
+h3 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 1.3rem !important;
+  color: #fafafa;
+  line-height: 2rem !important;
+}
+
+h3.cpc-styled {
+  position: relative;
+}
+
+h3.cpc-styled::before {
+  content: '';
+  display: block;
+  width: 100px;
+  margin-bottom: 13px;
+  -webkit-clip-path: polygon(
+    0 calc(100% - 1px),
+    2px 0,
+    40px 0,
+    42px calc(100% - 1px),
+    100% calc(100% - 1px),
+    100% 100%,
+    0 100%
+  );
+  clip-path: polygon(
+    0 calc(100% - 1px),
+    2px 0,
+    40px 0,
+    42px calc(100% - 1px),
+    100% calc(100% - 1px),
+    100% 100%,
+    0 100%
+  );
+  border-top: 3px solid currentColor;
+}
+
+p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.3rem;
+  color: #bfbfbf;
+}
+
+/* Navbar
+-------------------------------------------------- */
+.navbar-cpc {
+  background-color: #1a1a1a !important;
+  border-bottom-style: solid;
+}
+
+.container-fluid {
+  max-width: 1450px;
+}
+
+.cpc-logo {
+  width: 230px;
+}
+
+.cpc-logo-gif {
+  width: 56px;
+}
+
+/* Buttons
+-------------------------------------------------- */
+.navbar-links {
+  font-family: Rajdhani, sans-serif !important;
+  font-style: normal;
+  font-weight: 600;
+  display: block;
+  padding: 0.5rem 1.25rem 0.5rem 0 !important;
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: #fff;
+  text-align: right;
+}
+
+.navbar-links:hover {
+  color: #e2333d !important;
+  text-decoration: none;
+}
+
+.kyc {
+  color: #00ff9f !important;
+  font-family: Orbitron, sans-serif !important;
+  animation: blinker 1.5s linear infinite;
+  
+  @keyframes blinker {
+    24% {
+      opacity: 0;
+    }
+  }
+}
+
+.kyc:hover {
+  color: #e2333d !important;
+}
+
+.connect {
+  color: #000 !important;
+  background-color: #ffffff !important;
+  display: flex;
+  float: right;
+  margin: 1.25rem !important;
+  align-items: center;
+}
+
+.connect:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+.stake {
+  color: #000 !important;
+  background-color: #00ff9f !important;
+  margin-top: 0.5rem !important;
+  float: left;
+}
+
+.stake:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.unstake {
+  color: #fff !important;
+  background-color: #bd00ff !important;
+  margin-top: 0.5rem !important;
+  float: right;
+}
+
+.unstake:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.reinvest {
+  color: #000 !important;
+  background-color: #03d8f3 !important;
+  margin: 0.5rem 1rem auto auto !important;
+  float: left;
+}
+
+.reinvest:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.harvest {
+  color: #000 !important;
+  background-color: #fcee0c !important;
+  margin-top: 0.5rem !important;
+  float: left;
+}
+
+.harvest:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.claim {
+  color: #000 !important;
+  background-color: #fcee0c !important;
+  margin-top: 0.5rem !important;
+  float: right;
+}
+
+.claim:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+button {
+  font-family: Aldrich, sans-serif !important;
+  font-style: normal;
+  font-weight: 400;
+  padding: 0.5rem 1.2rem;
+  color: #fafafa;
+  background-color: #e2333d;
+  cursor: pointer;
+  border-style: none;
+}
+
+button:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+button.is-style-cpc-btn-styled {
+  --cpl-btn__crop: 10px;
+  --cpl-crop--top-left__size: var(--cpl-btn__crop);
+  --cpl-crop--bottom-right__size: var(--cpl-btn__crop);
+  --cpl-crop--top-right__size: 0%;
+  --cpl-crop--bottom-left__size: 0%;
+  clip-path: polygon(
+    0 var(--cpl-crop--top-left__size),
+    var(--cpl-crop--top-left__size) 0,
+    calc(100% - var(--cpl-crop--top-right__size)) 0,
+    100% var(--cpl-crop--top-right__size),
+    100% calc(100% - var(--cpl-crop--bottom-right__size)),
+    calc(100% - var(--cpl-crop--bottom-right__size)) 100%,
+    var(--cpl-crop--bottom-left__size) 100%,
+    0 calc(100% - var(--cpl-crop--bottom-left__size))
+  );
+}
+/* Footer
+-------------------------------------------------- */
+footer {
+  div {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.155rem;
+
+    a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      color: #bfbfbf;
+
+      #heart {
+        height: 16px;
+        width: 16px;
+
+        path {
+          fill: #e2333d;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+.container-right {
+  padding: 0 2rem;
+  .presale-container {
+    border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+    border-color: #fafafa94;
+    overflow: hidden;
+    .presale-container-status {
+      display: flex;
+      justify-content: center;
+      .presale-container-status-left {
+        .presale-container-status-phase-1 {
+          font-size: 1.3rem;
+          font-family: Aldrich, sans-serif !important;
+          color: #fafafa;
+        }
+        .presale-container-status-phase-2 {
+          font-size: 0.9rem;
+          font-family: Aldrich, sans-serif !important;
+          color: #fafafa;
+        }
+      }
+    }
+    .presale-container-sft-asset {
+      margin-top: 0.2rem;
+      display: flex;
+      justify-content: center;
+      img {
+        width: 96%;
+        height: 8%;
+      }
+    }
+
+    .presale-container-status-sale-amount {
+      font-size: 1.3rem;
+      font-family: Rajdhani, sans-serif !important;
+      color: #fafafa;
+      text-align: center;
+      margin-top: 0.2rem;
+    }
+    .presale-container-input {
+      font-size: 1.3rem;
+      font-family: Rajdhani, sans-serif !important;
+      color: #fafafa;
+      margin-top: 0.2rem;
+      display: flex;
+      background-color: #141414d5;
+
+      input {
+        font-size: 1.1rem;
+        font-weight: 600;
+        max-width: 4rem;
+        border: 0;
+        background-color: #e2333d94;
+        color: #fafafa;
+        overflow: visible;
+        text-align: center;
+        outline: none;
+      }
+
+      input:focus {
+        background-color: #e2333c;
+      }
+
+      button {
+        background-color: #e2333d94 !important;
+        font-size: 1.1rem;
+        font-family: Rajdhani, sans-serif !important;
+        font-weight: 600;
+        margin-top: 0 !important;
+      }
+
+      button:hover {
+        background-color: #e2333d !important;
+        color: white;
+      }
+
+      .presale-container-input-text-max {
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin: auto;
+        float: center;
+      }
+    }
+
+    .presale-container-text {
+      font-size: 1.4rem;
+      font-family: Rajdhani, sans-serif !important;
+      color: #fafafa;
+      margin-top: 0.4rem;
+      text-align: center;
+    }
+    .presale-container-info-text {
+      font-size: 1rem;
+      font-family: Rajdhani, sans-serif !important;
+      color: #fafafa;
+      margin-top: 30px;
+      text-align: end;
+    }
+  }
+
+  img {
+    border-radius: 1rem;
+  }
+}

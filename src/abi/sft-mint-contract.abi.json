@@ -1,0 +1,876 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.65.0-nightly",
+            "commitHash": "29e4a9ee0253cd39e552a77f51f11f9a5f1c41e6",
+            "commitDate": "2022-08-10",
+            "channel": "Nightly",
+            "short": "rustc 1.65.0-nightly (29e4a9ee0 2022-08-10)"
+        },
+        "contractCrate": {
+            "name": "sft-mint-contract",
+            "version": "0.0.0",
+            "git_version": "3f945f1-modified"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.31.1"
+        }
+    },
+    "name": "SFTMint",
+    "constructor": {
+        "inputs": [
+            {
+                "name": "minting_price",
+                "type": "BigUint"
+            },
+            {
+                "name": "payment_token_identifier",
+                "type": "TokenIdentifier"
+            },
+            {
+                "name": "treasury_address",
+                "type": "Address"
+            },
+            {
+                "name": "collection_owner_address",
+                "type": "Address"
+            },
+            {
+                "name": "whitelist_mint_start_timestamp",
+                "type": "u64"
+            },
+            {
+                "name": "burn_percent",
+                "type": "u32"
+            },
+            {
+                "name": "treasury_percent",
+                "type": "u32"
+            },
+            {
+                "name": "collection_owner_percent",
+                "type": "u32"
+            },
+            {
+                "name": "max_mint_count_in_whitelist",
+                "type": "u32"
+            },
+            {
+                "name": "max_mint_count",
+                "type": "u32"
+            },
+            {
+                "name": "sft_token_identifier",
+                "type": "TokenIdentifier"
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "addSfts",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_nonce",
+                    "type": "u64"
+                },
+                {
+                    "name": "sft_max_supply",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_mint_start_timestamp",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "withdraw",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "opt_token_id",
+                    "type": "optional<TokenIdentifier>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_amount",
+                    "type": "optional<BigUint>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_nonce",
+                    "type": "optional<u64>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "mint",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "mint_amount",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getSftMintInfo",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "SftMintInfo"
+                }
+            ]
+        },
+        {
+            "name": "getSftPoolInfosWithAddress",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<SftPoolInfo>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getSftPoolWithAddress",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "SftPoolInfo"
+                }
+            ]
+        },
+        {
+            "name": "getSftPoolInfos",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<SftPoolInfo>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getSftPoolInfo",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "SftPoolInfo"
+                }
+            ]
+        },
+        {
+            "name": "setTreasuryAddress",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "treasury_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setCollectionOwnerAddress",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "collection_owner_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setMintingPrice",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "minting_price",
+                    "type": "BigUint"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setPaymentTokenIdentifier",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "payment_token_identifier",
+                    "type": "TokenIdentifier"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setPause",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "pause_status",
+                    "type": "bool"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setWhitelistMintStartTimestamp",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "whitelist_mint_start_timestamp",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBurnPercent",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "burn_percent",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setTreasuryPercent",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "treasury_percent",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setCollectionOwnerPercent",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "collection_owner_percent",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setMaxMintCountInWhitelist",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "max_mint_count_in_whitelist",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setMaxMintCount",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "max_mint_count",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "addWhitelist",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "addresses",
+                    "type": "variadic<Address>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "removeWhitelist",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "addresses",
+                    "type": "variadic<Address>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "clearWhitelist",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "enableWhitelist",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "disableWhitelist",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setSftMaxSupply",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_max_supply",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setSftNonce",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_nonce",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setSftMintedLive",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_minted_live",
+                    "type": "bool"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setSftMintStartTimestamp",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_mint_start_timestamp",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setSftMintWhitelistEnabled",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_mint_whitelist_enabled",
+                    "type": "bool"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getTreasuryAddress",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionOwnerAddress",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ]
+        },
+        {
+            "name": "getMintingPrice",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getPaymentTokenIdentifier",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getPasued",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "getWhitelistMintStartTimestamp",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getBurnPercent",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getTreasuryPercent",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getCollectionOwnerPercent",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getMaxMintCountInWhitelist",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getMaxMintCount",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getSftTokenIdentifier",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getLastSftId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getSftIds",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<u32>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getSftMaxSupply",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getSftNonce",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getSftMintedCount",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getSftMintedLive",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "getSftMintWhitelist",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<Address>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getSftMintStartTimestamp",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getSftMintWhitelistEnabled",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "getUserSftMintedCountInWhitelist",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getUserSftMintedCount",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        }
+    ],
+    "hasCallback": false,
+    "types": {
+        "SftMintInfo": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "minting_price",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "treasury_address",
+                    "type": "Address"
+                },
+                {
+                    "name": "collection_owner_address",
+                    "type": "Address"
+                },
+                {
+                    "name": "payment_token_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "whitelist_mint_start_timestamp",
+                    "type": "u64"
+                },
+                {
+                    "name": "burn_percent",
+                    "type": "u32"
+                },
+                {
+                    "name": "treasury_percent",
+                    "type": "u32"
+                },
+                {
+                    "name": "collection_owner_percent",
+                    "type": "u32"
+                },
+                {
+                    "name": "max_mint_count_in_whitelist",
+                    "type": "u32"
+                },
+                {
+                    "name": "max_mint_count",
+                    "type": "u32"
+                },
+                {
+                    "name": "pause",
+                    "type": "bool"
+                },
+                {
+                    "name": "sft_token_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "last_sft_id",
+                    "type": "u32"
+                }
+            ]
+        },
+        "SftPoolInfo": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "sft_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_max_supply",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_nonce",
+                    "type": "u64"
+                },
+                {
+                    "name": "sft_minted_count",
+                    "type": "u32"
+                },
+                {
+                    "name": "sft_minted_live",
+                    "type": "bool"
+                },
+                {
+                    "name": "sft_mint_whitelist",
+                    "type": "bool"
+                },
+                {
+                    "name": "sft_mint_start_timestamp",
+                    "type": "u64"
+                },
+                {
+                    "name": "sft_mint_whitelist_enabled",
+                    "type": "bool"
+                },
+                {
+                    "name": "user_sft_minted_count_in_whitelist",
+                    "type": "u32"
+                },
+                {
+                    "name": "user_sft_minted_count",
+                    "type": "u32"
+                }
+            ]
+        }
+    }
+}

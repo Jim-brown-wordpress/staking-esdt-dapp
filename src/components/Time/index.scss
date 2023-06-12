@@ -1,0 +1,25 @@
+.js-clock-2 {
+  display: flex;
+  text-align: center;
+}
+
+.clock-time {
+  margin: 0px;
+  min-width: 32px;
+}
+
+.clock-number {
+  font-size: 1.2rem;
+  font-family: Aldrich, sans-serif !important;
+  font-weight: 400;
+  color: #fafafa;
+  display: block;
+}
+
+.clock-label {
+  font-size: 0.9rem;
+  font-family: Rajdhani, sans-serif !important;
+  font-weight: 600;
+  color: #e2333d;
+  display: block;
+}

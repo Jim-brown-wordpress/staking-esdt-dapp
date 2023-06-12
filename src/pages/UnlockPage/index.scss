@@ -1,0 +1,45 @@
+.custom-unlock-button {
+  button,
+  a {
+    font-family: Aldrich, sans-serif !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-decoration: none !important;
+    color: #fafafa;
+    display: flex !important;
+    padding: 1.2rem 1.8rem;
+    margin: 15px 0 15px 0;
+    width: 200px;
+    height: 58px;
+    background: #e2333d !important;
+    border: none !important;
+    cursor: pointer;
+    border-radius: 0px !important;
+    justify-content: center;
+  }
+
+  button:hover,
+  a:hover {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  a.is-style-cpc-btn-styled {
+    --cpl-btn__crop: 10px;
+    --cpl-crop--top-left__size: var(--cpl-btn__crop);
+    --cpl-crop--bottom-right__size: var(--cpl-btn__crop);
+    --cpl-crop--top-right__size: 0%;
+    --cpl-crop--bottom-left__size: 0%;
+    clip-path: polygon(
+      0 var(--cpl-crop--top-left__size),
+      var(--cpl-crop--top-left__size) 0,
+      calc(100% - var(--cpl-crop--top-right__size)) 0,
+      100% var(--cpl-crop--top-right__size),
+      100% calc(100% - var(--cpl-crop--bottom-right__size)),
+      calc(100% - var(--cpl-crop--bottom-right__size)) 100%,
+      var(--cpl-crop--bottom-left__size) 100%,
+      0 calc(100% - var(--cpl-crop--bottom-left__size))
+    );
+  }
+}
